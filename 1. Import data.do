@@ -2,13 +2,13 @@
  * Trial: RAFMEK
  * Purpose: Import data to Stata for data transfer
  * Date written: 16/01/2025
- * Updated: 21/01/2025
+ * Updated: 02/07/2025
  * Written by:Maggie Qiao
  
 clear
-cd "N:\ANALYSES\DDU-RAFMEK\Data transfers\13. Data transfer - Jan 2025\Data"
+cd "data/RAFMEK"
 
-log using "N:\ANALYSES\DDU-RAFMEK\Data transfers\13. Data transfer - Jan 2025\Data\Import.log", replace
+
 
 odbc query "DDURAFMEK_20250115"
 
@@ -74,6 +74,7 @@ cap qui rename x_usubjid id
 cap qui rename z_usubjid id
 cap qui rename x_ptinits ptinits
 cap qui rename x_birthdat birthdat
+cap qui rename age age(years)
 cap noi tostring id, replace
 cap qui sort id
 save `i'.dta, replace
